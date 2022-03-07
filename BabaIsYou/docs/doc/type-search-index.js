@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"ndiaye_ouali_BabaIsYou","l":"Block"},{"p":"ndiaye_ouali_BabaIsYou","l":"Categories"},{"p":"ndiaye_ouali_BabaIsYou","l":"GameArea"},{"p":"ndiaye_ouali_BabaIsYou","l":"ID"},{"p":"Ndiaye_Ouali_BabaIsyou.main","l":"Main"},{"p":"ndiaye_ouali_BabaIsYou","l":"Window"}];updateSearchResults();

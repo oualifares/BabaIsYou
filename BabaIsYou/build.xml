@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="BabaIsYou" default="clean" basedir=".">
+	
+	<property name="workspace" value="~/workspace/Ndiaye_Ouali_BabaIsYou" />
+	<property name="jar.file"        value="baba.jar"/>
+	<property name="source.dir"        value="src/ndiaye_ouali_BabaIsYou"/>
+	<property name="build.dir"        value="classes"/>
+	<property name="library.dir"        value="lib"/>
+	<property name="doc.dir"        value="docs/doc"/>
+	<property name="main-class"     value="Ndiaye_Ouali_BabaIsyou.main.Main"/>
+	
+	<path id="classpath">
+		<fileset dir="/home/fouali/workspace/Ndiaye_Ouali_BabaIsYou/lib" includes="*.jar"/>
+		<pathelement location="${build.dir}"/>
+	</path>
+	
+	 <!-- Compiles ${source.dir} files to ${build.dir} -->
+	<target name="compile">
+		<delete dir="${workspace}/${build.dir}"/>
+		<mkdir dir="${workspace}/${build.dir}"/>
+		<javac classpathref="classpath" includeantruntime="true" srcdir="/home/fouali/workspace/Ndiaye_Ouali_BabaIsYou/src/ndiaye_ouali_BabaIsYou" destdir="${workspace}/${build.dir}" includes="*.java">
+		</javac>
+	</target>
+	 <!-- Create the executable jar : ${jar.file}  -->
+	 <target name="jar" depends="compile">
+
+		        <manifestclasspath property="manifest.classpath" jarfile="${jar.file}">
+		            <classpath refid="classpath"/>
+		        </manifestclasspath>
+
+		        <jar destfile="${jar.file}" basedir="${library.dir}">
+		            <manifest>
+		                <attribute name="Main-Class" value="${main-class}"/>
+		                <attribute name="Class-Path" value="${manifest.classpath}"/>
+		            </manifest>
+		        </jar>
+		    </target>
+	 <!-- Generate javadocs for current project into ${doc.dir} -->
+	  <target name="doc" depends="jar" description="generate documentation">
+	  	<mkdir dir="${doc.dir}"/>
+	    <javadoc sourcepath="src" destdir="${doc.dir}" classpathref="classpath"/>
+	  </target>
+	<target name="clean" depends="doc">
+	</target>
+</project>
